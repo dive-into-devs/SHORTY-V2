@@ -33,7 +33,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'admin', 'superadmin'],
     default: 'user',
-  }
+  },
+  isAdmin: {
+     type: Boolean,
+     default: false
+    },
+  banned: {
+     type: Boolean,
+     default: false
+    }
 });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema)

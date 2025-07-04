@@ -1,10 +1,10 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
-import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 
-export default async function SignupPage() {
+export default async function LoginPage() {
   const session = await getServerSession(authOptions);
   if (session) redirect("/dashboard");
-  return <SignupForm />;
+  return <LoginForm />;
 }
