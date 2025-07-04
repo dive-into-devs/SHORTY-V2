@@ -34,7 +34,7 @@ export default function LoginPage() {
             Email
           </label>
           <input
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
             type="email"
             id="email"
             value={form.email}
@@ -49,7 +49,7 @@ export default function LoginPage() {
             Password
           </label>
           <input
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
             type="password"
             id="password"
             value={form.password}
