@@ -4,50 +4,68 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
- const [form, setForm] = useState({ email: "", password: "" });
- const router = useRouter();
- async function handleLogin(e) {
-  e.preventDefault();
-  const res = await signIn("credentials", {
-    redirect: false,
-    email: form.email,
-    password: form.password,
-  });
-  if (res?.error) {
-    alert(res.error);
-  } else {
-    alert("welcome back!");
-    router.push("/");
+  const [form, setForm] = useState({ email: "", password: "" });
+  const router = useRouter();
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: form.email,
+      password: form.password,
+    });
+    if (res?.error) {
+      alert(res.error);
+    } else {
+      router.push("/dashboard");
+    }
   }
 
- }
-  return(
-    <form onSubmit={handleLogin} className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-6">Login</h1>
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-2" htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block text-sm font-medium mb-2" htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-      <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">       Login</button>
-    </form>
-
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+      <form
+        onSubmit={handleLogin}
+        className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6"
+      >
+        <h1 className="text-3xl font-bold text-center text-blue-700 mb-2">Login</h1>
+        <p className="text-center text-gray-500 mb-6">Welcome back! Please enter your credentials.</p>
+        <div>
+          <label className="block mb-1 text-gray-700 font-medium" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            type="email"
+            id="email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            placeholder="you@email.com"
+            required
+            autoComplete="username"
+          />
+        </div>
+        <div>
+          <label className="block mb-1 text-gray-700 font-medium" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            type="password"
+            id="password"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            placeholder="••••••••"
+            required
+            autoComplete="current-password"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold text-lg shadow hover:bg-blue-700 transition-colors duration-200"
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 }
