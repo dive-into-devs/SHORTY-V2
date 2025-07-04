@@ -24,9 +24,8 @@ export default async function UrlsPage() {
   const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
 
   return (
-    <div className="max-w-2xl mx-auto mt-12 p-6 bg-white rounded-xl shadow">
-      <h1 className="text-2xl font-bold mb-4 text-blue-700">Your Shortened URLs</h1>
+    <>
       <UrlsList urls={safeUrls} baseUrl={baseUrl} />
-    </div>
+    </>
   );
 }

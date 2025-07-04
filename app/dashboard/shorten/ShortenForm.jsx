@@ -25,7 +25,7 @@ export default function ShortenForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+    <div className="flex min-h-screen items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6"

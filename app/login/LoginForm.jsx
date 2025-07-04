@@ -22,7 +22,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br">
       <form
         onSubmit={handleLogin}
         className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-6"
@@ -65,6 +65,12 @@ export default function LoginPage() {
         >
           Login
         </button>
+        <p className="text-center text-gray-500 mt-4">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-600 hover:underline">
+            Sign up
+          </a>
+        </p>
       </form>
     </div>
   );
